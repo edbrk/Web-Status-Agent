@@ -66,16 +66,16 @@ function base64prep() {
 }
 
 # Kill any lingering agent processes
-HTProcesses=$(pgrep -f serverstatus_agent.sh | wc -l)
+HTProcesses=$(pgrep -f webstatus_agent.sh | wc -l)
 if [ -z "$HTProcesses" ]
 then
 	HTProcesses=0
 fi
 if [ "$HTProcesses" -gt 15 ]
 then
-	pgrep -f serverstatus_agent.sh | xargs kill -9
+	pgrep -f webstatus_agent.sh | xargs kill -9
 fi
-for PID in $(pgrep -f serverstatus_agent.sh)
+for PID in $(pgrep -f webstatus_agent.sh)
 do
 	PID_TIME=$(ps -p "$PID" -oetime= | tr '-' ':' | awk -F: '{total=0; m=1;} {for (i=0; i < NF; i++) {total += $(NF-i)*m; m *= i >= 2 ? 24 : 60 }} {print total}')
 	if [ -n "$PID_TIME" ] && [ "$PID_TIME" -ge 120 ]
@@ -95,7 +95,7 @@ if [ -z "$M" ]
 then
 	M=0
 	# Clear the hetrixtools_cron.log every hour
-	rm -f "$ScriptPath"/serverstatus_cron.log
+	rm -f "$ScriptPath"/webstatus_cron.log
 fi
 
 # Network interfaces
@@ -256,7 +256,7 @@ NICS=$(base64prep "$NICS")
 DATA="$OS|$Uptime|$CPUModel|$CPUSpeed|$CPUCores|$CPU|$IOW|$RAMSize|$RAM|$SwapSize|$Swap|$DISKs|$NICS|$ServiceStatusString|$CONN|$DISKi"
 POST="v=$VERSION&s=$SID&d=$DATA"
 # Save data to file
-echo "$POST" > "$ScriptPath"/serverstatus_agent.log
+echo "$POST" > "$ScriptPath"/webstatus_agent.log
 
 # Post data
-wget --retry-connrefused --waitretry=1 -t 3 -T 15 -qO- --post-file="$ScriptPath/serverstatus_agent.log" https://webstatus.dev/ &> /dev/null
+wget --retry-connrefused --waitretry=1 -t 3 -T 15 -qO- --post-file="$ScriptPath/webstatus_agent.log" https://webstatus.dev/ &> /dev/null
