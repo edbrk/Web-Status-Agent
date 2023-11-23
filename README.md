@@ -1,57 +1,44 @@
-# HetrixTools Linux Server Monitoring Agent
+<p align="center">
+<img src="https://img.shields.io/github/stars/Edbtvplays/Web-Status-Agent" alt="Stars">
+<a href=""><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Documentation available here: https://docs.hetrixtools.com/category/server-monitor/
 
+## About Web Status Linux Server Monitoring Agent
 
--= ChangeLog =-
+The Web Status Agent is the monitoring agent that is based of HetrixTools server agent for monitoring linux servers. It is installed by users on there linux based system to collect and send various data points such as Disk Usage, RAM Usage, Network usage back to the web status application. This repository contains the agent script themselves aswell as the install, uninstall and update scripts for them. 
 
-Version 1.6.2:
-- improved the `timeout` command for `needs-restarting` which would still hang in rare cases (thanks to @BetTD)
+there is three primary other parts to the Web Status System.
 
-Version 1.6.1:
-- Added `timeout` to some calls to prevent them from freezing the agent script entirely in certain rare cases
-- Improved metrics posting with retries when the initial try fails
-- Improved disk detection for disk usage metrics (certain disks were not being detected before)
+The Web application: https://github.com/Edbtvplays/Web-Status
+The Resource monitor (This Repository)
+Latency Poller (Coming Soon)
 
-Version 1.6.0:
-- Bash code improvements ( thanks to https://www.shellcheck.net/ ).
-- Fixed warning messages for servers without swap.
+The project is currently in heavy active development, and initial working progress may not be seen for a while. Once the application is in a decent state a demo enviroment will be setup to showcase the application using all the parts in there seperate repositorys.
 
-Version 1.5.9:
-- Added disk IO data collection.
-- Added disk inodes data collection.
-- Added ability to track the number of network connections on specific ports.
+## Contributing 
 
-Version 1.5.8:
-- Improved compression to reduce data payload size
+Thank you for considering contributing to the Web Status System, until its initial completion and submission to the university i will not be taking any contributions to this repository. However, feel free to fork it and use it however you wish.
 
-Version 1.5.7:
-- Drive Health can now query the Drive stats (via S.M.A.R.T.) even when drives are behind hardware RAID
+## Credits 
+[Hetrix Tools](https://hetrixtools.com/)
 
-Version 1.5.6:
-- Added user warning if the server requires reboot
-- Added SMART self-test for NVMe disks
+## Security Vulnerabilities
 
-Version 1.5.5:
-- Support for multiple network interfaces
-- Read kernel version
+If you discover a security vulnerability within Laravel, please send an e-mail to Edward Brook via ed[at]edbrook.site All security vulnerabilities will be promptly addressed.
 
-Version 1.5.4:
-- View running processes
+## License 
 
-Version 1.5.3:
-- Software RAID Monitor
-- Drive Health Monitor
-
-Version 1.5.2:
-- System Uptime
-- IO Wait
-- Swap Usage
-- Multiple Disks Support (up to 10 disks)
-- Service Monitor (up to 10 services)
-
----
-
-### Unofficial forks:
-- SmartOS/Solaris: https://github.com/sunfoxcz/hetrixtools-agent-smartos/tree/smartos
-- OpenBSD: https://github.com/sholwe/hetrixtools-agent-openbsd
+```
+#		DISCLAIMER OF WARRANTY
+#
+#	The Software is provided "AS IS" and "WITH ALL FAULTS," without warranty of any kind, 
+#	including without limitation the warranties of merchantability, fitness for a particular purpose and non-infringement. 
+#	HetrixTools makes no warranty that the Software is free of defects or is suitable for any particular purpose. 
+#	In no event shall HetrixTools be responsible for loss or damages arising from the installation or use of the Software, 
+#	including but not limited to any indirect, punitive, special, incidental or consequential damages of any character including, 
+#	without limitation, damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses. 
+#	The entire risk as to the quality and performance of the Software is borne by you, the user.
+#
+#
+```
