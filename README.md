@@ -10,9 +10,9 @@ The Web Status Agent is the monitoring agent that is based of HetrixTools server
 
 there is three primary other parts to the Web Status System.
 
-The Web application: https://github.com/Edbtvplays/Web-Status
-The Resource monitor (This Repository)
-Latency Poller (Coming Soon)
+1. The Web application: https://github.com/Edbtvplays/Web-Status
+2. The Resource monitor (This Repository)
+3. Latency Poller (Coming Soon)
 
 The project is currently in heavy active development, and initial working progress may not be seen for a while. Once the application is in a decent state a demo enviroment will be setup to showcase the application using all the parts in there seperate repositorys.
 
