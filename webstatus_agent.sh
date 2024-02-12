@@ -32,31 +32,6 @@ NetworkInterfaces=""
 ## CAUTION: Do not edit any of the code below ##
 ################################################
 
-function servicestatus() {
-	# Check first via ps
-	if (( $(pgrep -f "$1" | wc -l) > 0 ))
-	then
-		# Up
-		echo "$(echo -ne "$1" | base64),1"
-	else
-		# Down, try with systemctl (if available)
-		if command -v "systemctl" > /dev/null 2>&1
-		then
-			if systemctl is-active --quiet "$1"
-			then
-				# Up
-				echo "$(echo -ne "$1" | base64),1"
-			else
-				# Down
-				echo "$(echo -ne "$1" | base64),0"
-			fi
-		else
-			# No systemctl, declare it down
-			echo "$(echo -ne "$1" | base64),0"
-		fi
-	fi
-}
-
 # Function used to prepare base64 str for url encoding
 function base64prep() {
 	str=$1
@@ -94,7 +69,7 @@ M=$(date +%M | sed 's/^0*//')
 if [ -z "$M" ]
 then
 	M=0
-	# Clear the hetrixtools_cron.log every hour
+	# Clear the web_status.log every hour
 	rm -f "$ScriptPath"/webstatus_cron.log
 fi
 
@@ -238,7 +213,6 @@ DISKi=$(base64prep "$DISKi")
 # Calculate Total Network Usage (bytes)
 RX=0
 TX=0
-NICS=""
 for NIC in "${NetworkInterfacesArray[@]}"
 do
 	# Calculate individual NIC usage
@@ -246,14 +220,13 @@ do
 	RX=$(echo "$RX" | awk '{printf "%18.0f",$1}' | xargs)
 	TX=$(echo | awk "{print ${tTX[$NIC]} / $X}")
 	TX=$(echo "$TX" | awk '{printf "%18.0f",$1}' | xargs)
-	NICS="$NICS|$NIC;$RX;$TX;"
 done
 NICS=$(echo -ne "$NICS" | gzip -cf | base64)
 NICS=$(base64prep "$NICS")
 
 
 # Prepare data
-DATA="$OS|$Uptime|$CPUModel|$CPUSpeed|$CPUCores|$CPU|$IOW|$RAMSize|$RAM|$SwapSize|$Swap|$DISKs|$NICS|$ServiceStatusString|$CONN|$DISKi"
+DATA="$OS|$Uptime|$CPUModel|$CPUSpeed|$CPUCores|$CPU|$IOW|$RAMSize|$RAM|$SwapSize|$Swap|$DISKs|$NICS|$CONN|$DISKi"
 POST="v=$VERSION&s=$SID&d=$DATA"
 # Save data to file
 echo "$POST" > "$ScriptPath"/webstatus_agent.log

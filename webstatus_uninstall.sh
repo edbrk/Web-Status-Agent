@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Set PATH
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -29,19 +28,6 @@ echo "... done."
 # Killing any running webstatus agents
 echo "Killing any webstatus agent scripts that may be currently running..."
 ps aux | grep -ie webstatus_agent.sh | awk '{print $2}' | xargs kill -9
-echo "... done."
-
-# Checking if webstatus user exists
-echo "Checking if webstatus user exists..."
-if id -u webstatus >/dev/null 2>&1
-then
-	echo "The webstatus user exists, killing its processes..."
-	pkill -9 -u `id -u webstatus`
-	echo "Deleting webstatus user..."
-	userdel webstatus
-else
-	echo "The webstatus user doesn't exist..."
-fi
 echo "... done."
 
 # Removing cronjob (if exists)
