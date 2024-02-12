@@ -58,14 +58,6 @@ echo "Making sure no Web Status agent scripts are currently running..."
 ps aux | grep -ie webstatus_agent.sh | awk '{print $2}' | xargs kill -9
 echo "... done."
 
-# Assign permissions
-echo "Assigning permissions for the webstatus user..."
-if id -u webstatus >/dev/null 2>&1
-then
-	chown -R webstatus:webstatus /etc/webstatus
-	chmod -R 700 /etc/webstatus
-fi
-
 # Cleaning up install file
 echo "Cleaning up the update file..."
 if [ -f $0 ]

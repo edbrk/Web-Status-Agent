@@ -86,7 +86,6 @@ wget -t 1 -T 30 -qO- --post-data "$POST" https://webstatus.dev/ &> /dev/null
 echo "... done."
 
 # Start the agent
-
 echo "Starting the agent under the 'root' user..."
 bash /etc/webstatus/webstatus_agent.sh > /dev/null 2>&1 &
 
