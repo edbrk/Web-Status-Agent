@@ -45,7 +45,7 @@ echo "... done."
 
 # Fetching new agent
 echo "Fetching the new agent..."
-wget -t 1 -T 30 -qO $AGENT https://raw.githubusercontent.com/Edbtvplays/agent/$VERS/hetrixtools_agent.sh
+wget -t 1 -T 30 -qO $AGENT https://raw.githubusercontent.com/edbrk/agent/$VERS/webstatus_agent.sh
 echo "... done."
 
 # Inserting Server ID (SID) into the agent config
