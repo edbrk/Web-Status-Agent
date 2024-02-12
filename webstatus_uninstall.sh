@@ -46,8 +46,7 @@ echo "... done."
 
 # Let webstatus platform know uninstall has been completed
 echo "Letting webstatus platform know the uninstallation has been completed..."
-POST="v=uninstall&s=$SID"
-wget -t 1 -T 30 -qO- --post-data "$POST" https://sm.hetrixtools.net/ &> /dev/null
+curl -X PATCH "http://localhost/api/server-agent/uninstall/${SID}" -d "" -s -o /dev/null 
 echo "... done."
 
 # All done
