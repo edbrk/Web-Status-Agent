@@ -82,7 +82,7 @@ echo "... done."
 # Let webstatus platform know install has been completed
 echo "Letting webstatus platform know the installation has been completed..."
 POST="v=install&s=$SID"
-wget -t 1 -T 30 -qO- --post-data "$POST" https://webstatus.dev/ &> /dev/null
+curl -X PATCH "http://localhost/server-agent/install/${SID}" -d "" -s -o /dev/null 
 echo "... done."
 
 # Start the agent
