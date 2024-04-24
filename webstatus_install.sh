@@ -81,7 +81,7 @@ echo "... done."
 
 # Let webstatus platform know install has been completed
 echo "Letting webstatus platform know the installation has been completed..."
-curl -X PATCH "http://localhost/api/server-agent/install/${SID}" -d "" -s -o /dev/null 
+curl -X PATCH "http://status.edbrook.site/api/server-agent/install/${SID}" -d "" -s -o /dev/null 
 echo "... done."
 
 # Start the agent
