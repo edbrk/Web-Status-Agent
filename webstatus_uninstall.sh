@@ -46,7 +46,7 @@ echo "... done."
 
 # Let webstatus platform know uninstall has been completed
 echo "Letting webstatus platform know the uninstallation has been completed..."
-curl -X PATCH "http://localhost/api/server-agent/uninstall/${SID}" -d "" -s -o /dev/null 
+curl -X PATCH "http://status.edbrook.site/api/server-agent/uninstall/${SID}" -d "" -s -o /dev/null 
 echo "... done."
 
 # All done
