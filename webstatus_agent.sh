@@ -113,7 +113,7 @@ jsonData=$(jq -n \
 echo "$jsonData" > "$ScriptPath"/server_stats.json
 
 # Post data using wget
-URL="http://status.edbrook.site/api/server-agent/metrics/$SID"
+URL="https://status.edbrook.site/api/server-agent/metrics/$SID"
 wget --retry-connrefused --waitretry=1 -t 3 -T 15 --header="Content-Type: application/json" --post-data "$jsonData" "$URL" &> "$ScriptPath/response.log"
 
 echo "Data posted to $URL"
