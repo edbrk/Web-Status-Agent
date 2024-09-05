@@ -1,5 +1,4 @@
 <p align="center">
-<img src="https://img.shields.io/github/stars/Edbtvplays/Web-Status-Agent" alt="Stars">
 <a href=""><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
@@ -10,9 +9,9 @@ The Web Status Agent is the monitoring agent that is based of HetrixTools server
 
 there is three primary other parts to the Web Status System.
 
-1. The Web application: https://github.com/Edbtvplays/Web-Status
+1. The Web application:
 2. The linux monitoring agent (This Repository)
-3. Latency Poller (Coming Soon)
+3. Latency Poller 
 
 The project is currently in heavy active development, and initial working progress may not be seen for a while. Once the application is in a decent state a demo enviroment will be setup to showcase the application using all the parts in there seperate repositorys.
 
